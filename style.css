@@ -1,0 +1,46 @@
+.mainHead{
+    width: auto;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    size: 200%;
+}
+
+form{
+    font-size: xx-large;
+}
+
+form input{
+    font-size: xx-large;
+}
+
+.container01{
+    display: grid;
+    grid-template-columns: 0.5fr 5fr 1fr 5fr 0.5fr;
+}
+
+.container02{
+    display: grid;
+    grid-template-columns: 0.5fr 3fr 0.5fr 3fr 0.5fr 3fr 0.5fr;
+}
+
+.holder{
+    padding: 20px;
+    background-color: green;
+    border-radius: 500px;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.holder a{
+    color: white;
+}
+
+.hold{
+    padding: 10px;
+    background-color: green;
+    border-radius: 500px;
+    text-align: center;
+    font-size: x-large;
+}
