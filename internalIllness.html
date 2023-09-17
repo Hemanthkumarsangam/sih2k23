@@ -1,45 +1,67 @@
-<html>
+<html lang="en">
     <head>
-        <title>INTERNAL ILLNESS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SIH 2k23</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="mainHead">
             <h1>INTERNAL ILLNESS</h1>
         </div>
-        <br><br><br><br><br>
-        <div class="container02">
-            <div></div>
-            <div class="hold">
-                <p>Fever</p>
-            </div>   
-            <div></div>         
-            <div class="hold">
-                <p>Cold</p>
-            </div>
-            <div></div>
-            <div class="hold">
-                <p>Cough</p>
-            </div>
-            <div></div>
-        </div>
-        <br><br><br><br><br>
-        <div class="container02">
-            <div></div>
-            <div class="hold">
-                <p>Headache</p>
-            </div><div></div>
-            <div class="hold">
-                <p>Motions</p>
-            </div><div></div>
-            <div class="hold">
-                <p>Other</p>
-            </div>
-        </div>
-        <br><br><br><br>
-        <form>
-            <label for="chronic">Chronic diseases *(if any)</label>
-            <input type="text" id="chronic" name="chronic">
-        </form>
+        <p style="font-size: 60; text-align: center;">DESCRIBE THE ILLNESS</p>
+        <button id="startButton">Start Recording</button>
+    <button id="stopButton" disabled>Stop Recording</button>
+    <div id="transcription"></div>
+    <div id="recordedText">content</div>
     </body>
+    <script>
+        speakText();
+        function speakText(){
+            if ('speechSynthesis' in window) {
+                var message = new SpeechSynthesisUtterance();
+                message.text = "DESCRIBE THE ILLNESS";
+                message.voice = speechSynthesis.getVoices()[2];
+                speechSynthesis.speak(message);
+            } else {
+                alert("Sorry, your browser does not support text-to-speech.");
+            }
+        }
+        setInterval(speakText, 10000);
+        function voiceRecord(){
+            const startButton = document.getElementById("startButton");
+            const stopButton = document.getElementById("stopButton");
+            const transcription = document.getElementById("transcription");
+            const recordedText = document.getElementById("recordedText");
+
+            let recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            
+            let recordedContent = '';
+
+            startButton.addEventListener("click", () => {
+                recordedContent = '';
+                transcription.textContent = ''; 
+                recognition.start();
+                startButton.disabled = true;
+                stopButton.disabled = false;
+                speechSynthesis.pause();
+            });
+
+            stopButton.addEventListener("click", () => {
+                recognition.stop();
+                startButton.disabled = false;
+                stopButton.disabled = true;
+                speechSynthesis.resume();
+            });
+
+            recognition.onresult = (event) => {
+                const result = event.results[event.results.length - 1];
+                const text = result[0].transcript;
+                transcription.textContent = text;
+                recordedContent += text + ' ';
+                recordedText.textContent = recordedContent;
+            };
+        }voiceRecord();
+    </script>
 </html>

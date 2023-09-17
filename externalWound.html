@@ -1,5 +1,7 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>EXTERNAL ILLNESS</title>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -7,6 +9,33 @@
         <div class="mainHead">
             <h1>EXTERNAL WOUND</h1>
         </div>
-        
+        <p style="font-size: 50; text-align: center;">HOW SERIOUS IS THE WOUND ?</p>
+        <br><br><br><br><br><br>
+        <div class="container01">
+            <div></div>
+            <a href="major.html"><div class="holder">
+                <p style="color: white;">MAJOR WOUND</p>
+            </div></a>
+            <div></div>
+            <a href="minor.html"><div class="holder">
+                <p style="color: white;">MINOR WOUND</p>
+            </div></a>
+            <div></div>
+        </div>
     </body>
+    <script>
+        function speakText(){
+            if('speechSynthesis' in window){
+                var message = new SpeechSynthesisUtterance();
+                message.text = "HOW SERIOUS IS THE WOUND ?";
+                message.voice = speechSynthesis.getVoices()[2];
+                speechSynthesis.speak(message);
+            }
+            else{
+                alert("Sorry, your browser does not support text-to-speech.");
+            }
+        }
+        speakText();
+        setInterval(speakText, 1000);
+    </script>
 </html>

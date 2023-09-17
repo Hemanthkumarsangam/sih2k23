@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SIH 2k23</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="mainHead">
+            <h1>AI Assisted Tele-medicine KIOSK for Rural India</h1>
+        </div>
+        <div id="userData" style="font-size: 34;display: grid; grid-template-columns: 8.5fr 1.5fr;"></div>       
+        <p style="font-size: 50; display: inline;">Are the details matchinng</p>
+        <pre style="font-size: xx-large; display: inline;">               <a href="index.html">NO</a>                <a href="type.html">YES</a></pre>
+    </body>
+    <script>
+        const data = {
+        };
+
+        function displayData(data) {
+            const userDataDiv = document.getElementById("userData");
+            userDataDiv.innerHTML = `
+                <div>
+                <h2 style="text-align: center;">User Information</h2>
+                <p>Name: ${data.name}</p>
+                <p>Age: ${data.age}</p>
+                <p>Gender: ${data.gender}</p>
+                <p>Phone number: ${data.phno}</p>
+                <p>Address: ${data.address}</p>
+                </div>
+                <div><br><br><img src="${data.imageUrl}" alt="${data.name}'s Image" width="100"></div>
+                <!-- Add more data fields as needed -->
+            `;
+        }
+        displayData(data);
+        function speakText(){
+            if ('speechSynthesis' in window) {
+                var message = new SpeechSynthesisUtterance();
+                message.text = "verify the details";
+                message.voice = speechSynthesis.getVoices()[2];
+                speechSynthesis.speak(message);
+            } else {
+                alert("Sorry, your browser does not support text-to-speech.");
+            }
+        }
+        speakText();
+        setInterval(speakText, 10000);
+    </script>  
+</html>
