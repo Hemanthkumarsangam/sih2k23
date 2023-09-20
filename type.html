@@ -9,7 +9,7 @@
         <div class="mainHead">
             <h1>TYPE OF MEDICAL CHALLENGE</h1>
         </div>
-        <br><br><br><br><br><br><br><br><br>
+        <p style="font-size: 50; text-align: center;">WHAT TYPE OF ILLNESS ARE YOU SUFFERING FROM</p>
         <div class="container01">
             <div></div>
             <a href="externalWound.html"><div class="holder">
@@ -21,12 +21,22 @@
             </div></a>
             <div></div>
         </div>
+        <br>
+        <div class="container01">
+            <div></div>
+            <img src="https://img.freepik.com/premium-vector/boy-with-bruises-his-leg_76775-31.jpg?w=740" alt="external wound"
+            style="width: 450; height: auto; padding-left: 50;">
+            <div></div>
+            <img src="https://img.freepik.com/premium-vector/cute-little-boy-suffering-from-stomach-ache-diarrhea-digestive-pain-holding-his-belly_535862-59.jpg?w=740" alt="internal illness"
+            style="width: 450; height: auto; padding-left: 50;">
+            <div></div>
+        </div>
     </body>
     <script>
         function speakText(){
             if ('speechSynthesis' in window) {
                 var message = new SpeechSynthesisUtterance();
-                message.text = "What type of illness are you suffering from";
+                message.text = "What type of illness are you suffering from ?";
                 message.voice = speechSynthesis.getVoices()[2];
                 speechSynthesis.speak(message);
             } else {

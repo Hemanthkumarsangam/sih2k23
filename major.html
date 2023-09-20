@@ -1,0 +1,67 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SIH 2k23</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="mainHead">
+            <h1>MAJOR WOUND</h1>
+        </div>
+        <p style="font-size: 60; text-align: center;">DESCRIBE THE WOUND</p>
+        <button id="startButton" style="width: auto; height: 150; font-size: 40;">Start Recording</button>
+        <button id="stopButton" disabled style="width: auto; height: 150; font-size: 40;">Stop Recording</button>
+        <div id="transcription"></div>
+        <div id="recordedText" style="font-size: 45;"></div>
+    </body>
+    <script>
+        speakText();
+        function speakText(){
+            if ('speechSynthesis' in window) {
+                var message = new SpeechSynthesisUtterance();
+                message.text = "DESCRIBE THE WOUND";
+                message.voice = speechSynthesis.getVoices()[2];
+                speechSynthesis.speak(message);
+            } else {
+                alert("Sorry, your browser does not support text-to-speech.");
+            }
+        }
+        setInterval(speakText, 10000);
+        function voiceRecord(){
+            const startButton = document.getElementById("startButton");
+            const stopButton = document.getElementById("stopButton");
+            const transcription = document.getElementById("transcription");
+            const recordedText = document.getElementById("recordedText");
+
+            let recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            
+            let recordedContent = '';
+
+            startButton.addEventListener("click", () => {
+                recordedContent = '';
+                transcription.textContent = ''; 
+                recognition.start();
+                startButton.disabled = true;
+                stopButton.disabled = false;
+                speechSynthesis.pause();
+            });
+
+            stopButton.addEventListener("click", () => {
+                recognition.stop();
+                startButton.disabled = false;
+                stopButton.disabled = true;
+                speechSynthesis.resume();
+            });
+
+            recognition.onresult = (event) => {
+                const result = event.results[event.results.length - 1];
+                const text = result[0].transcript;
+                transcription.textContent = text;
+                recordedContent += text + ' ';
+                recordedText.textContent = recordedContent;
+            };
+        }voiceRecord();
+    </script>
+</html>

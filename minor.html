@@ -1,0 +1,29 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SIH 2k23</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="mainHead">
+            <h1>MINOR WOUND</h1>
+        </div>
+        <p style="font-size: 50; text-align: center;">YOUR ADDRESS IS SENT TO THE <b style="color: blue;">ASHA WORKER</b> THEY WILL REACH YOU WITH FIRST AID AND MEDICINE</p>
+    </body>
+    <script>
+        function speakText(){
+            if('speechSynthesis' in window){
+                var message = new SpeechSynthesisUtterance();
+                message.text = ">YOUR ADDRESS IS SENT TO THE asha worker THEY WILL REACH YOU WITH FIRST AID AND MEDICINE";
+                message.voice = speechSynthesis.getVoices()[2];
+                speechSynthesis.speak(message);
+            }
+            else{
+                alert("Sorry, your browser does not support text-to-speech.");
+            }
+        }
+        speakText();
+        setInterval(speakText, 15000);
+    </script>
+</html>
