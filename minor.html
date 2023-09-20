@@ -9,13 +9,17 @@
         <div class="mainHead">
             <h1>MINOR WOUND</h1>
         </div>
-        <p style="font-size: 50; text-align: center;">YOUR ADDRESS IS SENT TO THE <b style="color: blue;">ASHA WORKER</b> THEY WILL REACH YOU WITH FIRST AID AND MEDICINE</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; justify-content: center; align-items: center;">
+            <p style="font-size: 50; text-align: center;">YOUR ADDRESS IS SENT TO THE <b style="color: blue;">ASHA WORKER</b> THEY WILL REACH YOU WITH FIRST AID AND MEDICINE</p>
+            <img src="https://max-website20-images.s3.ap-south-1.amazonaws.com/Medicine_Delivery_1_2_9b414c1f7f.png" alt="asha worker"
+            style="width: 500; height: auto;">
+        </div>
     </body>
     <script>
         function speakText(){
             if('speechSynthesis' in window){
                 var message = new SpeechSynthesisUtterance();
-                message.text = ">YOUR ADDRESS IS SENT TO THE asha worker THEY WILL REACH YOU WITH FIRST AID AND MEDICINE";
+                message.text = "YOUR ADDRESS IS SENT TO THE asha worker THEY WILL REACH YOU WITH FIRST AID AND MEDICINE";
                 message.voice = speechSynthesis.getVoices()[2];
                 speechSynthesis.speak(message);
             }

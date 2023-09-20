@@ -9,9 +9,19 @@
         <div class="mainHead">
             <h1>AI Assisted Tele-medicine KIOSK for Rural India</h1>
         </div>
-        <div id="userData" style="font-size: 34;display: grid; grid-template-columns: 8.5fr 1.5fr;"></div>       
-        <p style="font-size: 50; display: inline;">Are the details matching</p>
-        <pre style="font-size: xx-large; display: inline;">               <a href="index.html">NO</a>                <a href="type.html">YES</a></pre>
+        <p style="text-align: center; font-size: 35; font-weight: bolder;">User Information</p>
+        <div style="display: grid; grid-template-columns: 2fr 10fr 2fr;">    
+            <div></div>
+            <div id="userData" style="font-size: 25;display: grid; grid-template-columns: 8.5fr 1.5fr; background-color: lightgreen; border: 2px solid black; padding-left: 10;"></div>  
+            <div></div>
+        </div>     
+        <p style="font-size: 35; text-align: center; font-weight: bold;">Are the details matching</p>
+        <div style="display: grid; grid-template-columns: 3fr 2fr 3fr 2fr 3fr;">
+            <div></div>
+            <div><p style="font-size: 30; text-align: center;"> &#10060;<a href="index.html">NO</a></p></div>
+            <div></div>
+            <div><p style="font-size: 30; text-align: center;"><b>&#10003;</b><a href="type.html">YES</a></p></div>
+        </div>
     </body>
     <script>
         const data = {
@@ -21,15 +31,12 @@
             const userDataDiv = document.getElementById("userData");
             userDataDiv.innerHTML = `
                 <div>
-                <h2 style="text-align: center;">User Information</h2>
                 <p>Name: ${data.name}</p>
-                <p>Age: ${data.age}</p>
-                <p>Gender: ${data.gender}</p>
+                <p>Age: ${data.age} &nbsp;&nbsp;&nbsp;&nbsp;Gender: ${data.gender}</p>
                 <p>Phone number: ${data.phno}</p>
                 <p>Address: ${data.address}</p>
                 </div>
                 <div><br><br><img src="${data.imageUrl}" alt="${data.name}'s Image" width="100"></div>
-                <!-- Add more data fields as needed -->
             `;
         }
         displayData(data);
